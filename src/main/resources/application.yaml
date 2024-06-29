@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: "RedisKafkaElasticSearch"
+  jpa:
+    hibernate:
+      ddl-auto: "update"
+    show-sql: "true"
+    database-platform: "org.hibernate.community.dialect.SQLiteDialect"
+  datasource:
+#    url: "jdbc:mysql://localhost:3306/rediskafkaelasticsearch?createDatabaseIfNotExist=true"
+#    username: "root"
+#    password: "root"
+#    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    url: "jdbc:sqlite:db/db.sqlite"
+    username: "sa"
+    password: "sa"
+    driver-class-name: "org.sqlite.JDBC"
+
+
+
+
+
+
+
+
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: "trace"
+    root: info
+
+
+
+
+
+
+
+
+
+#Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,env,beans"
+  info:
+    env:
+      enabled: "true"
+
+#Actuator
+# /actuator/info
+#info:
+#  application:
+#    name: @project.name@
+#    description: @project.description@
+#    version: @project.version@
+#    author: "Manthan Patidar"
+#    slack: "https://app.slack.com/client/T028GFUJJ1E/D03784GU9MJ"
+#    linkedIn: "https://www.linkedin.com/in/manthan-patidar/"
