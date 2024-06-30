@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  redis:
+    image: "bitnami/redis:latest"
+    container_name: "bitnami_redis"
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_PORT_NUMBER=6379
+    
+    # # enable volume block below to persist data across restarts
+    # volumes:
+    #   - ./redis:/bitnami/redis/data

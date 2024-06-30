@@ -13,6 +13,7 @@ import com.manthan.rediskafkaelasticsearch.models.Author;
 import com.manthan.rediskafkaelasticsearch.models.Post;
 import com.manthan.rediskafkaelasticsearch.services.AuthorService;
 import com.manthan.rediskafkaelasticsearch.services.PostService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
