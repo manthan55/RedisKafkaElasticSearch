@@ -1,10 +1,10 @@
 spring:
   datasource:
-    url: "jdbc:sqlite:aws_db.sqlite"
+    url: "jdbc:sqlite:db.sqlite"
     username: "sa"
     password: "sa"
     driver-class-name: "org.sqlite.JDBC"
   data:
     redis:
-      host: "localhost"
+      host: "rkes-redis-cache-0001-001.rkes-redis-cache.gupcp0.aps1.cache.amazonaws.com"
       port: "6379"

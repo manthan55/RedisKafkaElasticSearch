@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.manthan</groupId>
 	<artifactId>RedisKafkaElasticSearch</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>v4</version>
 	<name>RedisKafkaElasticSearch</name>
 	<description>Sample project demonstrating how to integrate Redis, kafka &amp; ElasticSearch in a Spring Boot project and how to use AWS hosted services for the same. Reach out to me (Manthan Patidar) over Slack for more info.</description>
 	<url/>
@@ -71,12 +71,12 @@
 			<artifactId>hibernate-community-dialects</artifactId>
 			<version>6.4.4.Final</version>
 		</dependency>
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--			<version>3.3.1</version>-->
-<!--		</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>3.3.1</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
