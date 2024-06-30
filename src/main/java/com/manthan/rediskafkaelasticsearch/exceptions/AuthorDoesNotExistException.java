@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class AuthorDoesNotExistException extends Exception {
     public AuthorDoesNotExistException(Long authorId) {
-        super(STR."Author with id:\{authorId} was not found");
+        super("Author with id:"+authorId+" was not found");
     }
 }

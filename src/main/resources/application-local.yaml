@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: "jdbc:sqlite:db/local_db.sqlite"
+    username: "sa"
+    password: "sa"
+    driver-class-name: "org.sqlite.JDBC"
+  data:
+    redis:
+      host: "localhost"
+      port: "6379"

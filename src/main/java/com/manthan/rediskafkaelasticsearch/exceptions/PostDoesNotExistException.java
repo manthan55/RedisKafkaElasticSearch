@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class PostDoesNotExistException extends Exception {
     public PostDoesNotExistException(Long postId) {
-        super(STR."Post with id:\{postId} was not found");
+        super("Post with id:"+postId+" was not found");
     }
 }

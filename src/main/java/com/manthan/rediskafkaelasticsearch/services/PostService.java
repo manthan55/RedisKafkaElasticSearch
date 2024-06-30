@@ -5,7 +5,7 @@ import com.manthan.rediskafkaelasticsearch.exceptions.PostDoesNotExistException;
 import com.manthan.rediskafkaelasticsearch.models.Post;
 import com.manthan.rediskafkaelasticsearch.repositories.PostRepository;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.redis.core.RedisTemplate;
+//import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +15,14 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class PostService {
     private PostRepository postRepository;
-    private RedisTemplate<Long, Post> redisTemplate;
+//    private RedisTemplate<Long, Post> redisTemplate;
 
-    public PostService(PostRepository postRepository, RedisTemplate<Long, Post> redisTemplate) {
+    public PostService(PostRepository postRepository
+//                       RedisTemplate<Long, Post> redisTemplate
+    )
+    {
         this.postRepository = postRepository;
-        this.redisTemplate = redisTemplate;
+//        this.redisTemplate = redisTemplate;
     }
 
     public List<Post> getAllPosts(){
@@ -30,15 +33,16 @@ public class PostService {
     // so disabling this.redisTemplate
 //    https://premika-17.medium.com/implementing-redis-in-spring-boot-3d2756e5ab69
 //    @Cacheable(value = "post")
-    public Post getPost(Long postId) throws AuthorDoesNotExistException, PostDoesNotExistException {
+    public Post getPost(Long postId) throws AuthorDoesNotExistException, PostDoesNotExistException, InterruptedException {
         Post post = null;
-        post = this.redisTemplate.opsForValue().get(postId);
-        if(post != null) return post;
+//        post = this.redisTemplate.opsForValue().get(postId);
+//        if(post != null) return post;
 
+        Thread.sleep(5 * 1000);
         Optional<Post> postOptional = this.postRepository.findById(postId);
         if(postOptional.isEmpty()) throw new PostDoesNotExistException(postId);
         post = postOptional.get();
-        redisTemplate.opsForValue().set(postId, post, 20, TimeUnit.SECONDS);
+//        redisTemplate.opsForValue().set(postId, post, 20, TimeUnit.SECONDS);
         return post;
     }
 
@@ -46,7 +50,7 @@ public class PostService {
         return this.postRepository.save(post);
     }
 
-    public Post deletePost(Long postId) throws AuthorDoesNotExistException, PostDoesNotExistException {
+    public Post deletePost(Long postId) throws AuthorDoesNotExistException, PostDoesNotExistException, InterruptedException {
         Post post = this.getPost(postId);
         this.postRepository.delete(post);
         return post;

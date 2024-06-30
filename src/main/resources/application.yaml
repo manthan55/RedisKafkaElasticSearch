@@ -1,21 +1,15 @@
 spring:
   application:
     name: "RedisKafkaElasticSearch"
+  profiles:
+    # https://codesarray.com/view/Multiple-application-properties-file-in-spring-boot
+    active: "local"
+    default: "local"
   jpa:
     hibernate:
       ddl-auto: "update"
     show-sql: "true"
     database-platform: "org.hibernate.community.dialect.SQLiteDialect"
-  datasource:
-    url: "jdbc:sqlite:db/db.sqlite"
-    username: "sa"
-    password: "sa"
-    driver-class-name: "org.sqlite.JDBC"
-  data:
-    redis:
-      host: "localhost"
-      port: "6379"
-
 
 
 
@@ -44,13 +38,13 @@ management:
     env:
       enabled: "true"
 
-##Actuator
-## /actuator/info
-#info:
-#  application:
-#    name: @project.name@
-#    description: @project.description@
-#    version: @project.version@
-#    author: "Manthan Patidar"
-#    slack: "https://app.slack.com/client/T028GFUJJ1E/D03784GU9MJ"
-#    linkedIn: "https://www.linkedin.com/in/manthan-patidar/"
+#Actuator
+# /actuator/info
+info:
+  application:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    author: "Manthan Patidar"
+    slack: "https://app.slack.com/client/T028GFUJJ1E/D03784GU9MJ"
+    linkedIn: "https://www.linkedin.com/in/manthan-patidar/"
