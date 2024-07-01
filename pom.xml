@@ -89,6 +89,12 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 			<version>3.3.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
 		<!-- http://server:port/v3/api-docs -->
 		<!-- http://server:port/swagger-ui/index.html -->
