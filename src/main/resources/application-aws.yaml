@@ -8,3 +8,7 @@ spring:
     redis:
       host: "rkes-redis-cache-0001-001.rkes-redis-cache.gupcp0.aps1.cache.amazonaws.com"
       port: "6379"
+  elasticsearch:
+    uris: "localhost:9200"
+#    username: ""
+#    password: ""

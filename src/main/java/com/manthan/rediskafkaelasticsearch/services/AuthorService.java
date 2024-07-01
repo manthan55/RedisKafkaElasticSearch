@@ -2,7 +2,7 @@ package com.manthan.rediskafkaelasticsearch.services;
 
 import com.manthan.rediskafkaelasticsearch.exceptions.AuthorDoesNotExistException;
 import com.manthan.rediskafkaelasticsearch.models.Author;
-import com.manthan.rediskafkaelasticsearch.repositories.AuthorRepository;
+import com.manthan.rediskafkaelasticsearch.repositories.jpa.AuthorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

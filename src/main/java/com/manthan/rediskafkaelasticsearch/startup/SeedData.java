@@ -41,16 +41,16 @@ public class SeedData implements CommandLineRunner {
         List<Post> author2Posts = new ArrayList<>();
         List<Post> author3Posts = new ArrayList<>();
 
-        Author author1 = new Author("author1",author1Posts);
-        Author author2 = new Author("author2",author2Posts);
-        Author author3 = new Author("author3",author3Posts);
+        Author author1 = new Author("ByteByteGo",author1Posts);
+        Author author2 = new Author("High Scalability",author2Posts);
+        Author author3 = new Author("Jordan has no life",author3Posts);
 
-        Post a1p1 = new Post("post1author1","post1 by author1", author1);
-        Post a1p2 = new Post("post2author1","post2 by author1", author1);
-        Post a1p3 = new Post("post3author1","post3 by author1", author1);
+        Post a1p1 = new Post("A Crash Course in Database Sharding","As an application grows in popularity, it attracts more active users and incorporates additional features. This growth leads to a daily increase in data generation, which is a positive indicator from a business perspective. ", author1);
+        Post a1p2 = new Post("How Netflix Manages 238 Million Memberships?","As a subscription-based streaming service, Netflix's primary revenue source is its membership business. With a staggering 238 million members worldwide, managing memberships efficiently is crucial for the company's success and continued growth.", author1);
+        Post a1p3 = new Post("A Crash Course on Microservice Communication Patterns","Microservices architecture promotes the development of independent services. However, these services still need to communicate with each other to function as a cohesive system. ", author1);
 
-        Post a2p1 = new Post("post1author2","post1 by author2", author2);
-        Post a2p2 = new Post("post2author2","post2 by author2", author2);
+        Post a2p1 = new Post("Brief History of Scaling Uber","On a cold evening in Paris in 2008, Travis Kalanick and Garrett Camp couldn't get a cab. That's when the idea for Uber was born. How great would it be if you could \"push a button and get a ride?\"", author2);
+        Post a2p2 = new Post("Behind AWS S3’s Massive Scale","It’s the service that popularized the notion of cold-storage to the world of cloud. In essence - a scalable multi-tenant storage service which provides interfaces to store and retrieve objects with extremely high availability and durability at a relatively low cost. Customers share all of the underlying hardware.", author2);
 
 
         this.authorService.addAuthor(author1);

@@ -1,4 +1,4 @@
-package com.manthan.rediskafkaelasticsearch.repositories;
+package com.manthan.rediskafkaelasticsearch.repositories.jpa;
 
 import com.manthan.rediskafkaelasticsearch.models.Post;
 import org.springframework.data.jpa.repository.JpaRepository;

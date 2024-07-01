@@ -2,7 +2,7 @@ version: "3"
 
 services:
   redis:
-    image: "bitnami/redis:latest"
+    image: "bitnami/redis:7.0.15"
     container_name: "bitnami_redis"
     ports:
       - "6379:6379"

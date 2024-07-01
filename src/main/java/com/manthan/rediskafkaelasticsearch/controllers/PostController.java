@@ -1,9 +1,6 @@
 package com.manthan.rediskafkaelasticsearch.controllers;
 
-import com.manthan.rediskafkaelasticsearch.dtos.AddAuthorRequestDTO;
-import com.manthan.rediskafkaelasticsearch.dtos.AddPostRequestDTO;
-import com.manthan.rediskafkaelasticsearch.dtos.AuthorDTO;
-import com.manthan.rediskafkaelasticsearch.dtos.PostDTO;
+import com.manthan.rediskafkaelasticsearch.dtos.*;
 import com.manthan.rediskafkaelasticsearch.dtos.api.APIResponse;
 import com.manthan.rediskafkaelasticsearch.dtos.api.APIResponseFailure;
 import com.manthan.rediskafkaelasticsearch.dtos.api.APIResponseSuccess;
@@ -11,6 +8,7 @@ import com.manthan.rediskafkaelasticsearch.exceptions.AuthorDoesNotExistExceptio
 import com.manthan.rediskafkaelasticsearch.exceptions.PostDoesNotExistException;
 import com.manthan.rediskafkaelasticsearch.models.Author;
 import com.manthan.rediskafkaelasticsearch.models.Post;
+import com.manthan.rediskafkaelasticsearch.models.PostES;
 import com.manthan.rediskafkaelasticsearch.services.AuthorService;
 import com.manthan.rediskafkaelasticsearch.services.PostService;
 import org.springframework.cache.annotation.Cacheable;
@@ -110,6 +108,23 @@ public class PostController {
         catch(PostDoesNotExistException ex){
             response = new APIResponseFailure(ex);
             httpStatus = HttpStatus.NOT_FOUND;
+        }
+        catch(Exception ex){
+            response = new APIResponseFailure(ex);
+            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+        }
+        return ResponseEntity.status(httpStatus).body(response);
+    }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<APIResponse> searchPost(@RequestBody SearchPostRequestDTO requestDTO){
+        APIResponse response = null;
+        HttpStatus httpStatus = HttpStatus.OK;
+
+        try{
+            Iterable<PostES> posts = this.postService.searchPostsByKeywords(requestDTO.getKeywords());
+            response = new APIResponseSuccess<>(posts);
         }
         catch(Exception ex){
             response = new APIResponseFailure(ex);

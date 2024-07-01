@@ -1,25 +1,28 @@
 package com.manthan.rediskafkaelasticsearch.services;
 
+import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.manthan.rediskafkaelasticsearch.exceptions.AuthorDoesNotExistException;
 import com.manthan.rediskafkaelasticsearch.exceptions.PostDoesNotExistException;
 import com.manthan.rediskafkaelasticsearch.models.Post;
-import com.manthan.rediskafkaelasticsearch.repositories.PostRepository;
-import org.springframework.cache.annotation.Cacheable;
+import com.manthan.rediskafkaelasticsearch.models.PostES;
+import com.manthan.rediskafkaelasticsearch.repositories.elasticsearch.PostESRepository;
+import com.manthan.rediskafkaelasticsearch.repositories.jpa.PostRepository;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class PostService {
     private PostRepository postRepository;
+    private PostESRepository postESRepository;
     private RedisTemplate<Long, Post> redisTemplate;
 
-    public PostService(PostRepository postRepository, RedisTemplate<Long, Post> redisTemplate)
+    public PostService(PostRepository postRepository, PostESRepository postESRepository, RedisTemplate<Long, Post> redisTemplate)
     {
         this.postRepository = postRepository;
+        this.postESRepository = postESRepository;
         this.redisTemplate = redisTemplate;
     }
 
@@ -45,7 +48,9 @@ public class PostService {
     }
 
     public Post addPost(Post post){
-        return this.postRepository.save(post);
+        Post savedPost = this.postRepository.save(post);
+        this.postESRepository.save(PostES.fromPost(savedPost));
+        return savedPost;
     }
 
     public Post deletePost(Long postId) throws AuthorDoesNotExistException, PostDoesNotExistException, InterruptedException {
@@ -55,6 +60,20 @@ public class PostService {
     }
 
     public void deleteAllPosts(){
+        this.postESRepository.deleteAll();
         this.postRepository.deleteAll();
+    }
+
+    public Iterable<PostES> searchPostsByKeywords(String keywords){
+//        Iterable<PostES> res = this.postESRepository.findAll();
+        List<PostES> titleMatching = this.postESRepository.findAllByTitleContaining(keywords);
+        List<PostES> contentMatching = this.postESRepository.findAllByContentContaining(keywords);
+
+        titleMatching.addAll(contentMatching);
+        Set<PostES> set = new LinkedHashSet<>(titleMatching);
+
+        Iterable<PostES> res = new ArrayList<>(set);
+
+        return res;
     }
 }
