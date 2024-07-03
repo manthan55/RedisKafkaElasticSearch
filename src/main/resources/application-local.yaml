@@ -12,3 +12,5 @@ spring:
     uris: "localhost:9200"
   #    username: ""
   #    password: ""
+  kafka:
+    bootstrap-servers: "localhost:2092"
