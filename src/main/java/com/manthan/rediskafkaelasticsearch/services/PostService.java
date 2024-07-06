@@ -39,11 +39,13 @@ public class PostService {
         post = this.redisTemplate.opsForValue().get(postId);
         if(post != null) return post;
 
-        Thread.sleep(5 * 1000);
+        // intentional 1 minute delay to simulate proper DB call
+        Thread.sleep(1 * 1000);
         Optional<Post> postOptional = this.postRepository.findById(postId);
         if(postOptional.isEmpty()) throw new PostDoesNotExistException(postId);
         post = postOptional.get();
-        redisTemplate.opsForValue().set(postId, post, 20, TimeUnit.SECONDS);
+        // https://stackoverflow.com/a/64161239
+        redisTemplate.opsForValue().set(postId, post, 30, TimeUnit.SECONDS);
         return post;
     }
 

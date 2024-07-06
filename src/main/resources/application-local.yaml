@@ -1,3 +1,4 @@
+# activate this profile when running RedisKafkaElasticSearch app locally (via IntelliJ)
 spring:
   datasource:
     url: "jdbc:sqlite:db/db.sqlite"
@@ -10,7 +11,5 @@ spring:
       port: "6379"
   elasticsearch:
     uris: "localhost:9200"
-  #    username: ""
-  #    password: ""
   kafka:
     bootstrap-servers: "localhost:2092"

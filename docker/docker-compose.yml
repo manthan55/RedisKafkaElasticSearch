@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  rkes:
+    image: "rkes:latest"
+    container_name: "rkes"
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - rkes-nw
+
+  rkesns:
+    image: "rkesns:latest"
+    container_name: "rkesns"
+    ports:
+      - "8090:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - rkes-nw
+
+networks:
+  rkes-nw:
+    external: true

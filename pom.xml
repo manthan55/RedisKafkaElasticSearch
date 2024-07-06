@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.manthan</groupId>
 	<artifactId>RedisKafkaElasticSearch</artifactId>
-	<version>v4</version>
+	<version>v10</version>
 	<name>RedisKafkaElasticSearch</name>
 	<description>Sample project demonstrating how to integrate Redis, kafka &amp; ElasticSearch in a Spring Boot project and how to use AWS hosted services for the same. Reach out to me (Manthan Patidar) over Slack for more info.</description>
 	<url/>

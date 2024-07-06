@@ -22,7 +22,6 @@ logging:
     org:
       springframework:
         security: "trace"
-    root: info
 
 
 

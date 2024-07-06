@@ -1,3 +1,4 @@
+# activate this profile when running RedisKafkaElasticSearch app in AWS ElasticBeanstalk
 spring:
   datasource:
     url: "jdbc:sqlite:db.sqlite"
@@ -6,9 +7,10 @@ spring:
     driver-class-name: "org.sqlite.JDBC"
   data:
     redis:
-      host: "rkes-redis-cache-0001-001.rkes-redis-cache.gupcp0.aps1.cache.amazonaws.com"
+      host: "ip-10-0-0-54.ap-south-1.compute.internal"
+#      host: "rkes-redis-cache-0001-001.rkes-redis-cache.gupcp0.aps1.cache.amazonaws.com"
       port: "6379"
   elasticsearch:
-    uris: "localhost:9200"
-#    username: ""
-#    password: ""
+    uris: "ip-10-0-0-54.ap-south-1.compute.internal:9200"
+  kafka:
+    bootstrap-servers: "ip-10-0-0-54.ap-south-1.compute.internal:29092"
