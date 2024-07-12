@@ -7,7 +7,7 @@ spring:
     driver-class-name: "org.sqlite.JDBC"
   data:
     redis:
-      host: "bitnami_redis"
+      host: "redis"
       port: "6379"
   elasticsearch:
     uris: "elasticsearch:9200"

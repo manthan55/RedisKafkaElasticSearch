@@ -2,22 +2,27 @@ version: "3"
 
 services:
   rkes:
-    image: "rkes:latest"
+    image: "manthanp/rkes:latest"
     container_name: "rkes"
     ports:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATA_REDIS_HOST=rkes-redis-cache-0001-001.rkes-redis-cache.gupcp0.aps1.cache.amazonaws.com
+      - SPRING_KAFKA_BOOTSTRAP-SERVERS=b-1.rkeskafka.83k8r8.c2.kafka.ap-south-1.amazonaws.com:9094,b-2.rkeskafka.83k8r8.c2.kafka.ap-south-1.amazonaws.com:9094
     networks:
       - rkes-nw
 
   rkesns:
-    image: "rkesns:latest"
+    image: "manthanp/rkesns:latest"
+#    image: "rkesns"
     container_name: "rkesns"
     ports:
-      - "8090:8080"
+#      - "8090:8080"
+      - "8090:8090"
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+#      - SPRING_KAFKA_BOOTSTRAP-SERVERS=b-2.rkeskafka.eezeb4.c2.kafka.ap-south-1.amazonaws.com:9092,b-1.rkeskafka.eezeb4.c2.kafka.ap-south-1.amazonaws.com:9092
     networks:
       - rkes-nw
 
